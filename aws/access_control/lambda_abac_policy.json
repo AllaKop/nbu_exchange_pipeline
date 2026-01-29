@@ -1,0 +1,36 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCreateLambdaWithProjectTag",
+      "Effect": "Allow",
+      "Action": "lambda:CreateFunction",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/project_name": "nbu-exchange"
+        }
+      }
+    },
+    {
+      "Sid": "AllowTaggingLambda",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:TagResource",
+        "lambda:UntagResource"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowAllActionsOnTaggedLambdas",
+      "Effect": "Allow",
+      "Action": "lambda:*",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceTag/project_name": "nbu-exchange"
+        }
+      }
+    }
+  ]
+}

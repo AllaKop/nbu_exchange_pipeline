@@ -1,0 +1,38 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCreateEventBridgeRuleWithProjectTag",
+      "Effect": "Allow",
+      "Action": [
+        "events:PutRule"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestTag/project_name": "nbu-exchange"
+        }
+      }
+    },
+    {
+      "Sid": "AllowTaggingEventBridgeRules",
+      "Effect": "Allow",
+      "Action": [
+        "events:TagResource",
+        "events:UntagResource"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowAllActionsOnTaggedEventBridgeRules",
+      "Effect": "Allow",
+      "Action": "events:*",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceTag/project_name": "nbu-exchange"
+        }
+      }
+    }
+  ]
+}
