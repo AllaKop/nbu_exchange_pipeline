@@ -209,3 +209,4 @@ __marimo__/
 
 # requests 
 aws/lambda/python
+aws/lambda/requests_layer.zip
