@@ -1,36 +1,62 @@
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowCreateLambdaWithProjectTag",
-      "Effect": "Allow",
-      "Action": "lambda:CreateFunction",
-      "Resource": "*",
-      "Condition": {
-        "StringEquals": {
-          "aws:RequestTag/project_name": "nbu-exchange"
-        }
-      }
-    },
-    {
-      "Sid": "AllowTaggingLambda",
-      "Effect": "Allow",
-      "Action": [
-        "lambda:TagResource",
-        "lambda:UntagResource"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "AllowAllActionsOnTaggedLambdas",
-      "Effect": "Allow",
-      "Action": "lambda:*",
-      "Resource": "*",
-      "Condition": {
-        "StringEquals": {
-          "aws:ResourceTag/project_name": "nbu-exchange"
-        }
-      }
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "AllowListLambdaFunctions",
+			"Effect": "Allow",
+			"Action": "lambda:ListFunctions",
+			"Resource": "*"
+		},
+		{
+			"Sid": "AllowCreateLambdaWithProjectTag",
+			"Effect": "Allow",
+			"Action": "lambda:CreateFunction",
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:RequestTag/project_name": "nbu-exchange"
+				}
+			}
+		},
+		{
+			"Sid": "AllowTaggingLambda",
+			"Effect": "Allow",
+			"Action": [
+				"lambda:TagResource",
+				"lambda:UntagResource"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "AllowAllActionsOnTaggedLambdas",
+			"Effect": "Allow",
+			"Action": "lambda:*",
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:ResourceTag/project_name": "nbu-exchange"
+				}
+			}
+		},
+		{
+			"Sid": "AllowLambdaLayerManagement",
+			"Effect": "Allow",
+			"Action": [
+				"lambda:PublishLayerVersion",
+				"lambda:DeleteLayerVersion",
+				"lambda:GetLayerVersion",
+				"lambda:ListLayerVersions",
+				"lambda:ListLayers",
+				"lambda:AddLayerVersionPermission",
+				"lambda:RemoveLayerVersionPermission"
+			],
+			"Resource": "arn:aws:lambda:eu-north-1:693426599524:layer:*"
+		},
+		{
+			"Sid": "AllowListLambdaLayers",
+			"Effect": "Allow",
+			"Action": "lambda:ListLayers",
+			"Resource": "*"
+		}
+	]
 }

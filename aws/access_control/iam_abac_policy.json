@@ -1,45 +1,101 @@
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowCreateRoleWithProjectTag",
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateRole"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "StringEquals": {
-          "aws:RequestTag/project_name": "nbu-exchange"
-        }
-      }
-    },
-    {
-      "Sid": "AllowTaggingRoles",
-      "Effect": "Allow",
-      "Action": [
-        "iam:TagRole",
-        "iam:UntagRole"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "AllowAllActionsOnTaggedRoles",
-      "Effect": "Allow",
-      "Action": [
-        "iam:PassRole",
-        "iam:DeleteRole",
-        "iam:AttachRolePolicy",
-        "iam:DetachRolePolicy",
-        "iam:GetRole",
-        "iam:UpdateAssumeRolePolicy"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "StringEquals": {
-          "aws:ResourceTag/project_name": "nbu-exchange"
-        }
-      }
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "AllowCreateRoleWithProjectTag",
+			"Effect": "Allow",
+			"Action": [
+				"iam:CreateRole"
+			],
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:RequestTag/project_name": "nbu-exchange"
+				}
+			}
+		},
+		{
+			"Sid": "AllowTaggingRoles",
+			"Effect": "Allow",
+			"Action": [
+				"iam:TagRole",
+				"iam:UntagRole",
+				"iam:ListRoleTags"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "AllowAllActionsOnTaggedRoles",
+			"Effect": "Allow",
+			"Action": [
+				"iam:PassRole",
+				"iam:DeleteRole",
+				"iam:AttachRolePolicy",
+				"iam:DetachRolePolicy",
+				"iam:GetRole",
+				"iam:UpdateAssumeRolePolicy"
+			],
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:ResourceTag/project_name": "nbu-exchange"
+				}
+			}
+		},
+		{
+			"Sid": "AllowCreatePolicyWithProjectTag",
+			"Effect": "Allow",
+			"Action": [
+				"iam:CreatePolicy"
+			],
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:RequestTag/project_name": "nbu-exchange"
+				}
+			}
+		},
+		{
+			"Sid": "AllowTaggingPolicies",
+			"Effect": "Allow",
+			"Action": [
+				"iam:TagPolicy",
+				"iam:UntagPolicy",
+				"iam:ListPolicyTags"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "AllowAllActionsOnTaggedPolicies",
+			"Effect": "Allow",
+			"Action": [
+				"iam:DeletePolicy",
+				"iam:GetPolicy",
+				"iam:AttachRolePolicy",
+				"iam:DetachRolePolicy"
+			],
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"aws:ResourceTag/project_name": "nbu-exchange"
+				}
+			}
+		},
+		{
+			"Sid": "AllowListAllTags",
+			"Effect": "Allow",
+			"Action": [
+				"tag:GetResources",
+				"tag:GetTagKeys",
+				"tag:GetTagValues"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "AllowPassLambdaExecutionRole",
+			"Effect": "Allow",
+			"Action": "iam:PassRole",
+			"Resource": "arn:aws:iam::693426599524:role/Lambda_execution_role"
+		}
+	]
 }
