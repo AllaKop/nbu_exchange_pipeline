@@ -42,10 +42,17 @@
 			"Sid": "AllowTaggingS3Objects",
 			"Effect": "Allow",
 			"Action": [
+				"s3:GetObjectTagging",
 				"s3:PutObjectTagging",
 				"s3:DeleteObjectTagging"
 			],
 			"Resource": "arn:aws:s3:::nbu-exchange-raw/*"
-		}
+		},
+		{
+			"Sid": "AllowGetBucketVersioning",
+			"Effect": "Allow",
+			"Action": "s3:GetBucketVersioning",
+			"Resource": "arn:aws:s3:::nbu-exchange-raw"
+			}
 	]
 }
