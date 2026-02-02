@@ -2,57 +2,13 @@
 	"Version": "2012-10-17",
 	"Statement": [
 		{
-			"Sid": "AllowListAllBuckets",
+			"Sid": "AllowFullAccessToSpecificBucket",
 			"Effect": "Allow",
-			"Action": "s3:ListAllMyBuckets",
-			"Resource": "arn:aws:s3:::*"
-		},
-		{
-			"Sid": "AllowS3BucketActions",
-			"Effect": "Allow",
-			"Action": [
-				"s3:ListBucket",
-				"s3:GetBucketLocation"
-			],
-			"Resource": "arn:aws:s3:::nbu-exchange-raw"
-		},
-		{
-			"Sid": "AllowPutGetObject",
-			"Effect": "Allow",
-			"Action": [
-				"s3:PutObject",
-				"s3:GetObject"
-			],
-			"Resource": "arn:aws:s3:::nbu-exchange-raw/*"
-		},
-		{
-			"Sid": "AllowDeleteObjectWithTag",
-			"Effect": "Allow",
-			"Action": [
-				"s3:DeleteObject"
-			],
-			"Resource": "arn:aws:s3:::nbu-exchange-raw/*",
-			"Condition": {
-				"StringEquals": {
-					"s3:ExistingObjectTag/project_name": "nbu-exchange"
-				}
-			}
-		},
-		{
-			"Sid": "AllowTaggingS3Objects",
-			"Effect": "Allow",
-			"Action": [
-				"s3:GetObjectTagging",
-				"s3:PutObjectTagging",
-				"s3:DeleteObjectTagging"
-			],
-			"Resource": "arn:aws:s3:::nbu-exchange-raw/*"
-		},
-		{
-			"Sid": "AllowGetBucketVersioning",
-			"Effect": "Allow",
-			"Action": "s3:GetBucketVersioning",
-			"Resource": "arn:aws:s3:::nbu-exchange-raw"
-			}
+			"Action": "s3:*",
+			"Resource": [
+				"arn:aws:s3:::nbu-exchange-raw",
+				"arn:aws:s3:::nbu-exchange-raw/*"
+			]
+		}
 	]
 }
