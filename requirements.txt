@@ -1,5 +1,3 @@
-Dependecies
-
 pytest
 boto3
 requests
