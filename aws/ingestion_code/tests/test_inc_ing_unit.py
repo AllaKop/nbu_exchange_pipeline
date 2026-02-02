@@ -7,7 +7,7 @@ def test_build_url():
     assert "start=20260202" in url
     assert "end=20260202" in url
 
-@patch('nbu_exchange_api_incr_ingestion_s3.requests.get')
+@patch('aws.ingestion_code.nbu_exchange_api_incr_ingestion_s3.requests.get')
 def test_fetch_data_success(mock_get):
     mock_response = MagicMock()
     mock_response.status_code = 200
@@ -16,7 +16,7 @@ def test_fetch_data_success(mock_get):
     response = nbu_exchange_api_incr_ingestion_s3.fetch_data(url)
     assert response.status_code == 200
 
-@patch('nbu_exchange_api_incr_ingestion_s3.boto3.client')
+@patch('aws.ingestion_code.nbu_exchange_api_incr_ingestion_s3.boto3.client')
 def test_save_to_s3(mock_boto_client):
     mock_s3 = MagicMock()
     mock_boto_client.return_value = mock_s3
