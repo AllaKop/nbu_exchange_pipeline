@@ -3,7 +3,6 @@ import requests
 import json
 from datetime import datetime
 
-
 def build_url(date):
     return f"https://bank.gov.ua/NBU_Exchange/exchange_site?start={date}&end={date}&sort=exchangedate&order=desc&json"
 

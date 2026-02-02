@@ -4,7 +4,6 @@ import json
 from datetime import datetime
 import calendar
 
-
 def build_dates(year, month):
     start_date = f"{year}{month:02d}01"
     last_day = calendar.monthrange(year, month)[1]
