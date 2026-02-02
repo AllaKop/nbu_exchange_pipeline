@@ -17,8 +17,8 @@ def test_fetch_data_success(mock_get):
     mock_response = MagicMock()
     mock_response.status_code = 200
     mock_get.return_value = mock_response
-    url = nbu_exchange_api_full_ingestion_s3.build_url("20200201", "20200202")
-    response = nbu_exchange_api_full_ingestion_s3.fetch_data(url)
+    url = aws.lambda_code.nbu_exchange_api_full_ingestion_s3.build_url("20200201", "20200202")
+    response = aws.lambda_code.nbu_exchange_api_full_ingestion_s3.fetch_data(url)
     assert response.status_code == 200
 
 @patch('nbu_exchange_api_full_ingestion_S3.boto3.client')
