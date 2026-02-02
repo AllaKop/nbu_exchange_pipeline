@@ -208,5 +208,5 @@ __marimo__/
 
 
 # requests 
-aws/lambda/python
-aws/lambda/requests_layer.zip
+aws/lambda_code/python
+aws/lambda_code/requests_layer.zip

@@ -1,4 +1,4 @@
-import nbu_exchange_api_incr_ingestion_S3
+import aws.lambda_code.nbu_exchange_api_incr_ingestion_S3
 from unittest.mock import patch, MagicMock
 
 def test_build_url():

@@ -1,5 +1,5 @@
-import nbu_exchange_api_full_ingestion_s3
-from nbu_exchange_api_full_ingestion_s3 import build_dates, build_url, fetch_data, save_to_s3
+import aws.lambda_code.nbu_exchange_api_full_ingestion_s3
+from aws.lambda_code.nbu_exchange_api_full_ingestion_s3 import build_dates, build_url, fetch_data, save_to_s3
 from unittest.mock import patch, MagicMock
 
 def test_build_dates():
