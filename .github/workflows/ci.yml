@@ -31,5 +31,6 @@ jobs:
       run: |
         pwd
         ls -R
+        
     - name: Run unit tests
       run: pytest aws/lambda_code/tests
