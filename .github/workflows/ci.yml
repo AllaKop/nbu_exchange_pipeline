@@ -33,4 +33,4 @@ jobs:
         ls -R
         
     - name: Run unit tests
-      run: pytest aws/lambda_code/tests
+      run: pytest aws/ingestion_code/tests

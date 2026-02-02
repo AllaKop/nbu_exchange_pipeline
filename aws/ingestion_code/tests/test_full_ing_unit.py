@@ -1,5 +1,5 @@
-import aws.lambda_code.nbu_exchange_api_full_ingestion_s3
-from aws.lambda_code.nbu_exchange_api_full_ingestion_s3 import build_dates, build_url, fetch_data, save_to_s3
+import aws.ingestion_code.nbu_exchange_api_full_ingestion_s3
+from aws.ingestion_code.nbu_exchange_api_full_ingestion_s3 import build_dates, build_url, fetch_data, save_to_s3
 from unittest.mock import patch, MagicMock
 
 def test_build_dates():
@@ -17,8 +17,8 @@ def test_fetch_data_success(mock_get):
     mock_response = MagicMock()
     mock_response.status_code = 200
     mock_get.return_value = mock_response
-    url = aws.lambda_code.nbu_exchange_api_full_ingestion_s3.build_url("20200201", "20200202")
-    response = aws.lambda_code.nbu_exchange_api_full_ingestion_s3.fetch_data(url)
+    url = aws.ingestion_code.nbu_exchange_api_full_ingestion_s3.build_url("20200201", "20200202")
+    response = aws.ingestion_code.nbu_exchange_api_full_ingestion_s3.fetch_data(url)
     assert response.status_code == 200
 
 @patch('nbu_exchange_api_full_ingestion_S3.boto3.client')
