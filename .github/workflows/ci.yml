@@ -27,5 +27,9 @@ jobs:
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
+    - name: Show files
+      run: |
+        pwd
+        ls -R
     - name: Run unit tests
       run: pytest aws/lambda_code/tests
