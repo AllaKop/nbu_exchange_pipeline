@@ -96,6 +96,12 @@
 			"Effect": "Allow",
 			"Action": "iam:PassRole",
 			"Resource": "arn:aws:iam::693426599524:role/Lambda_execution_role"
+		},
+		{
+			"Sid": "AllowPassAWSServiceRoleForAmazonEventBridgeApiDestinations",
+			"Effect": "Allow",
+			"Action": "iam:PassRole",
+			"Resource": "arn:aws:iam::693426599524:role/nbu_exchange_eventbridge_role"
 		}
 	]
 }
