@@ -14,10 +14,10 @@ CREATE OR REPLACE TABLE nbu_exchange.silver.exchange_rate_extracted (
     units INT
 );
 
-CREATE OR REPLACE STREAM exchange_rate_raw_stream ON TABLE nbu_exchange.bronze.exchange_rate_staging;
+CREATE OR REPLACE STREAM exchange_rate_raw_stream ON TABLE nbu_exchange.bronze.exchange_rate_raw;
 
 CREATE OR REPLACE TASK load_silver_from_bronze
-  SCHEDULE = 'USING CRON * * * * * UTC'  
+  SCHEDULE = 'USING CRON 0 7 * * * UTC'  
 AS
 INSERT INTO nbu_exchange.silver.exchange_rate_silver
 SELECT
@@ -35,4 +35,4 @@ SELECT
 FROM nbu_exchange.bronze.exchange_rate_staging_stream,
      LATERAL FLATTEN(input => raw);
 
-ALTER TASK process_raw_to_silver RESUME;
+ALTER TASK nbu_exchange.silver.load_silver_from_bronze RESUME;

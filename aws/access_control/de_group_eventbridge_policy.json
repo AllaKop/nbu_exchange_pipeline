@@ -1,0 +1,92 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "AllowAllActionsEventBridgeRules",
+            "Effect": "Allow",
+            "Action": [
+                "scheduler:CreateSchedule",
+                "scheduler:GetSchedule",
+                "scheduler:ListSchedules",
+                "scheduler:UpdateSchedule",
+                "scheduler:DeleteSchedule"
+            ],
+            "Resource": "*"
+		},
+        {
+            "Sid": "AllowPutRuleWithTag",
+            "Effect": "Allow",
+            "Action": "events:PutRule",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/project_name": "nbu-exchange"
+                }
+            }
+        },
+        {
+            "Sid": "AllowDeleteRuleWithTag",
+            "Effect": "Allow",
+            "Action": "events:DeleteRule",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/project_name": "nbu-exchange"
+                }
+            }
+        },
+        {
+            "Sid": "AllowPutTargetsForTaggedRules",
+            "Effect": "Allow",
+            "Action": "events:PutTargets",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/project_name": "nbu-exchange"
+                }
+            }
+        },
+        {
+            "Sid": "AllowRemoveTargetsForTaggedRules",
+            "Effect": "Allow",
+            "Action": "events:RemoveTargets",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/project_name": "nbu-exchange"
+                }
+            }
+        },
+        {
+            "Sid": "AllowDescribeAndListRules",
+            "Effect": "Allow",
+            "Action": [
+                "events:DescribeRule",
+                "events:ListRules"
+            ],
+            "Resource": "*"
+        },
+        {
+			"Sid": "AllowTaggingEventBridgeRules",
+			"Effect": "Allow",
+			"Action": [
+				"events:TagResource",
+				"events:UntagResource",
+				"events:ListTagsForResource"
+			],
+			"Resource": "arn:aws:events:eu-north-1:693426599524:rule/*"
+		},
+		{
+			"Sid": "AllowListTargetsByRule",
+			"Effect": "Allow",
+			"Action": "events:ListTargetsByRule",
+			"Resource": "arn:aws:events:eu-north-1:693426599524:rule/*"
+		},
+        {
+            "Sid": "AllowListEventBuses",
+            "Effect": "Allow",
+            "Action": "events:ListEventBuses",
+            "Resource": "arn:aws:events:eu-north-1:693426599524:event-bus/*"
+        }
+	]
+}
