@@ -1,0 +1,17 @@
+CREATE ROLE data_engineer;
+
+GRANT CREATE DATABASE ON ACCOUNT TO ROLE data_engineer;
+GRANT CREATE WAREHOUSE ON ACCOUNT TO ROLE data_engineer;
+GRANT CREATE INTEGRATION ON ACCOUNT TO ROLE data_engineer;
+
+GRANT ROLE data_engineer TO USER AllaK;
+
+USE ROLE data_engineer;
+
+CREATE DATABASE nbu_exchange;
+
+CREATE SCHEMA bronze;
+CREATE SCHEMA silver;
+CREATE SCHEMA gold;
+CREATE SCHEMA test;
+

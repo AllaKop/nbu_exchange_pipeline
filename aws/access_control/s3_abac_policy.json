@@ -2,6 +2,15 @@
 	"Version": "2012-10-17",
 	"Statement": [
 		{
+			"Sid": "AllowListBuckets",
+			"Effect": "Allow",
+			"Action": [
+				"s3:ListAllMyBuckets",
+				"s3:GetBucketLocation"
+			],
+			"Resource": "*"
+		},
+		{
 			"Sid": "AllowFullAccessToSpecificBucket",
 			"Effect": "Allow",
 			"Action": "s3:*",
