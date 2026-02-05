@@ -71,6 +71,15 @@ from nbu_exchange.silver.exchange_rate_extracted
 where trim(exchange_date) = '' or trim(lower(exchange_date)) = 'null' or exchange_date is null
 ;
 
+select group_number, count(distinct currency_code) as distinct_currency_count
+from nbu_exchange.silver.exchange_rate_extracted
+group by group_number 
+;
+
+select count(distinct currency_code) as currency_count, count(distinct r030_code) as r030_count
+from nbu_exchange.silver.exchange_rate_extracted
+;
+
 -- Need to do:
 -- 0. deduplicate
 -- 1. Calculation_date cast to date format
@@ -78,7 +87,11 @@ where trim(exchange_date) = '' or trim(lower(exchange_date)) = 'null' or exchang
 -- 3. currency_code upper case maybe
 -- 4. currency_name has nulls (IS null), map
 -- 5. exchange_date cast to date format
--- 6. group_number
+-- 6. group_number (1,2,3) find what's the meaning, map with names
+-- 7. r030_code - 150 r030 count, 109 currency count?
+-- 8. r030_code - 
+
+
 
 select *
 from nbu_exchange.silver.exchange_rate_extracted
