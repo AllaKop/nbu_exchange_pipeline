@@ -210,3 +210,5 @@ __marimo__/
 # requests 
 aws/ingestion_code/python
 aws/ingestion_code/requests_layer.zip
+
+.env

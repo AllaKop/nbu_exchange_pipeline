@@ -3,3 +3,7 @@ boto3
 requests
 pandas
 pyarrow
+dotenv
+snowflake-snowpark-python
+snowflake-cli
+notebook ipykernel
