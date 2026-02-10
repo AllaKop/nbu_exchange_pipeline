@@ -19,3 +19,5 @@ CREATE STAGE nbu_exchange_stage
     STORAGE_INTEGRATION = nbu_exchange_S3_integration
     URL = 's3://nbu-exchange-raw/json'
     FILE_FORMAT = nbu_exchange_json_format;
+
+DESC STAGE nbu_exchange_stage;

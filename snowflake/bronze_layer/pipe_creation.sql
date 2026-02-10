@@ -5,6 +5,14 @@ CREATE OR REPLACE TABLE nbu_exchange.bronze.exchange_rate_raw (
     raw VARIANT
 );
 
+SELECT
+  $1
+FROM
+  @nbu_exchange_stage (FILE_FORMAT => nbu_exchange_json_format);
+
+COPY INTO nbu_exchange.bronze.exchange_rate_raw 
+FROM @nbu_exchange.bronze.nbu_exchange_stage
+FILE_FORMAT = (TYPE = 'JSON');
 
 CREATE OR REPLACE PIPE nbu_exchange.bronze.nbu_exchange_pipe
   AUTO_INGEST = TRUE
@@ -17,14 +25,9 @@ SHOW PIPES;
 
 DESCRIBE PIPE nbu_exchange.bronze.nbu_exchange_pipe;
 
-SELECT * 
+SELECT count(*)
 FROM nbu_exchange.bronze.exchange_rate_raw 
 ;
-
-SELECT
-  $1
-FROM
-  @nbu_exchange_stage (FILE_FORMAT => nbu_exchange_json_format);
 
 select *
   from table(nbu_exchange.information_schema.pipe_usage_history(
