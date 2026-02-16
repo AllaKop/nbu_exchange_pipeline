@@ -21,12 +21,15 @@ CREATE OR REPLACE PIPE nbu_exchange.bronze.nbu_exchange_pipe
       FROM @nbu_exchange.bronze.nbu_exchange_stage
       FILE_FORMAT = (TYPE = 'JSON');
 
+ALTER PIPE nbu_exchange.bronze.nbu_exchange_pipe REFRESH;
+
 SHOW PIPES;
 
 DESCRIBE PIPE nbu_exchange.bronze.nbu_exchange_pipe;
 
-SELECT count(*)
+SELECT *
 FROM nbu_exchange.bronze.exchange_rate_raw 
+where $1:exchangedate = '03.02.2026'
 ;
 
 select *

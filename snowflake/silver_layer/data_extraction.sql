@@ -62,6 +62,9 @@ FROM nbu_exchange.silver.exchange_rate_raw_stream,
 
 ALTER TASK nbu_exchange.silver.load_silver_from_bronze RESUME;
 
+EXECUTE TASK nbu_exchange.silver.load_silver_from_bronze;
+
+
 SHOW TASKS;
 
 SELECT *
@@ -71,6 +74,8 @@ ORDER BY COMPLETED_TIME DESC
 LIMIT 10;
 
 GRANT EXECUTE TASK ON ACCOUNT TO ROLE DATA_ENGINEER;
+
+GRANT EXECUTE MANAGED TASK ON ACCOUNT TO ROLE DATA_ENGINEER;
 
 SHOW TASKS LIKE 'load_silver_from_bronze' IN SCHEMA nbu_exchange.silver;
 

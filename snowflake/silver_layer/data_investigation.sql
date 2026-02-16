@@ -159,5 +159,6 @@ where units = 0 or units is null or units < 1
 
 select *
 from nbu_exchange.silver.exchange_rate_extracted
-where exchange_date = '06.02.2026'
+where exchange_date LIKE '%.02.2026'
+order by exchange_date desc
 ;
